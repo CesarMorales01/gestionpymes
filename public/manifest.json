@@ -1,0 +1,17 @@
+{
+    "name": "Gestion Pymes",
+    "short_name": "Gestion Pymes",
+    "start_url": "/index.php",
+    "background_color": "#ffffff",
+    "description": "App de Gestión",
+    "display": "standalone",
+    "theme_color": "#ffffff",
+    "icons": [
+        {
+            "src": "icon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
