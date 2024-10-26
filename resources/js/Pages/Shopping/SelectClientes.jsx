@@ -18,7 +18,7 @@ const SelectClientes = (params) => {
       let opts = []
       for (let i = 0; i < params.clientes.length; i++) {
         let nom = params.clientes[i].nombre
-        if (params.clientes[i].apellidos != null) {
+        if (params.clientes[i].apellidos != undefined) {
           nom = params.clientes[i].nombre + " " + params.clientes[i].apellidos
         }
         if (params.clientes[i].cedula != undefined) {

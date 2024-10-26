@@ -5,9 +5,11 @@ import UpdateProfileInformationForm from './Partials/UpdateProfileInformationFor
 import { Head } from '@inertiajs/react';
 import PrimaryButton from '@/Components/PrimaryButton';
 import DialogoContrato from '../UIGeneral/DialogoContrato';
+import GlobalFunctions from '../services/GlobalFunctions'
 
 export default function Edit({ auth, mustVerifyEmail, status, globalVars }) {
-
+    const glob = new GlobalFunctions()
+    
     function aceptarContrato(){
         const exp= 3600*60*24*365*10
         glob.setCookie('contrato', 'ok', exp)

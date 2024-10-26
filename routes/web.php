@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CajaController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\CateGastosController;
 use App\Http\Controllers\CategoriesProvidersController;
 use App\Http\Controllers\CategoryController;
@@ -72,7 +73,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('/question', QuestionController::class);
     Route::get('/caja/delete/{id}', [CajaController::class, 'borrar'])->name('caja.borrar');
     Route::resource('/caja', CajaController::class);
-    
 });
 
 require __DIR__.'/auth.php';

@@ -112,11 +112,11 @@ class ShoppingController extends Controller
         $id = DB::getPdo()->lastInsertId();
         $nums = count($datos->listaProductos);
         for ($i = 0; $i < $nums; $i++) {
-            $proveedor=null;
-            if(is_object($datos->listaProductos[$i]->proveedor)) {
-                $proveedor= $datos->listaProductos[$i]->proveedor->id;
-            }else{
-                $proveedor= $datos->listaProductos[$i]->proveedor;
+            $proveedor = null;
+            if (is_object($datos->listaProductos[$i]->proveedor)) {
+                $proveedor = $datos->listaProductos[$i]->proveedor->id;
+            } else {
+                $proveedor = $datos->listaProductos[$i]->proveedor;
             }
             DB::table('lista_productos_comprados')->insert([
                 'fk_compra' => $id,
@@ -151,18 +151,18 @@ class ShoppingController extends Controller
         ]);
         $nums = count($datos->listaProductos);
         DB::table('lista_productos_comprados')->where('fk_compra', '=', $datos->id)->delete();
-        
+
         // Al eliminar producto comprado se debe sumar al inventario...
         for ($z = 0; $z < count($datos->listaProductosAntiguos); $z++) {
             $this->sumarInventario($datos->listaProductosAntiguos[$z]);
         }
-        
+
         for ($i = 0; $i < $nums; $i++) {
-            $proveedor=null;
-            if(is_object($datos->listaProductos[$i]->proveedor)) {
-                $proveedor= $datos->listaProductos[$i]->proveedor->id;
-            }else{
-                $proveedor= $datos->listaProductos[$i]->proveedor;
+            $proveedor = null;
+            if (is_object($datos->listaProductos[$i]->proveedor)) {
+                $proveedor = $datos->listaProductos[$i]->proveedor->id;
+            } else {
+                $proveedor = $datos->listaProductos[$i]->proveedor;
             }
             DB::table('lista_productos_comprados')->insert([
                 'fk_compra' => $datos->id,
@@ -222,21 +222,15 @@ class ShoppingController extends Controller
         $auth = Auth()->user();
         $globalVars = $this->global->getGlobalVars();
         $globalVars->info = DB::table('info_pagina')->first();
-        $compras = DB::table('lista_compras')->orderBy('id', 'desc')->paginate(100);
+        $compras = DB::table('lista_compras')->whereBetween('fecha', [$this->getFechaHoy(), $this->getFechaHoy()])->orderBy('id', 'desc')->paginate(100);
         foreach ($compras as $compra) {
-            if ($compra->cliente != '') {
-                $cliente = DB::table('clientes')->where('cedula', '=', $compra->cliente)->first();
-                $compra->cliente = $cliente;
-            } else {
-                $cliente1 = new stdClass();
-                $cliente1->cedula = '';
-                $cliente1->nombre = '';
-                $compra->cliente = $cliente1;
-            }
+            // Validar si la compra pertenece a un cliente registrado... si no mandar id
+            $compra->cliente = $this->getClienteCompra($compra->cliente);
             $listaProductos = DB::table('lista_productos_comprados')->where('fk_compra', '=', $compra->id)->get();
             $compra->listaProductos = $listaProductos;
         }
         $token = csrf_token();
+        return Inertia::render('Shopping/Shopping', compact('auth', 'compras', 'globalVars', 'token'));
         $estado = "¡Compra eliminada!";
         return Inertia::render('Shopping/Shopping', compact('auth', 'compras', 'globalVars', 'token', 'estado'));
     }
@@ -255,7 +249,7 @@ class ShoppingController extends Controller
         $datosCompra->totalFactura = $totalFactura;
         $datosCompra->listaProductos = $listaProductos;
         if ($datosCompra->cliente != '') {
-            $cliente = DB::table('clientes')->where('cedula', '=', $datosCompra->cliente)->first();
+            $cliente = DB::table('clientes')->where('id', '=', $datosCompra->cliente)->first();
             $ciudad = DB::table('municipios')->where('id', '=', $cliente->ciudad)->first();
             if ($ciudad == null) {
                 $ciudad = '';
@@ -328,13 +322,9 @@ class ShoppingController extends Controller
         return Inertia::render('Shopping/NewShopping', compact('auth', 'clientes', 'globalVars', 'deptos', 'municipios', 'productos', 'token', 'datosCompra', 'categorias'));
     }
 
-    public function update(Request $request, string $id)
-    {
-    }
+    public function update(Request $request, string $id) {}
 
-    public function destroy(string $id)
-    {
-    }
+    public function destroy(string $id) {}
 
     public function allshopping()
     {

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const DialogoContrato = (params) => {
-
+   
     return (
         <div id='modalContrato' className="modal fade bd-example-modal-lg" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-lg">
@@ -21,12 +21,12 @@ const DialogoContrato = (params) => {
                             <strong style={{ fontWeight: 'bold', fontSize: '1.1em' }}>Primero.</strong> El desarrollador suministrará el diseño, la estructura, el código y el despliegue,  para poner en funcionamiento una aplicación web (página web), que tendrá por objeto la divulgación y promoción de productos y/o servicios, esta contendrá en términos generales, lo siguiente:
                             <br></br>
                             - Un panel de navegación.
-                           <br></br>
+                            <br></br>
                             - Un carrusel de imágenes dinámicas, AGREGADAS POR EL CLIENTE (esta funcionalidad tiene por objeto resaltar productos, promociones u ofertas).
                             <br></br>
                             - Una interfaz para clasificación de productos por categorías.
                             <br></br>
-                           - Una interfaz para visualizar un listado de productos, AGREGADOS POR EL CLIENTE.
+                            - Una interfaz para visualizar un listado de productos, AGREGADOS POR EL CLIENTE.
                             <br></br>
                             - Un buscador de productos.
                             <br></br>
@@ -38,8 +38,8 @@ const DialogoContrato = (params) => {
                             <br></br>
                             - Una interfaz para la gestión de cuentas de usuarios, estos podrán registrarse, iniciar sesión, modificar sus datos y cerrar sesión.
                             <br></br>
-                           -  Una Interfaz carrito de compras, los usuarios podrán agregar y eliminar productos de un carrito de compras.
-                           <br></br>
+                            -  Una Interfaz carrito de compras, los usuarios podrán agregar y eliminar productos de un carrito de compras.
+                            <br></br>
                             - Una Interfaz de confirmación de compra, los usuarios podrán confirmar su compra al visualizar los datos del usuario de quien realiza la compra, la lista de productos seleccionados y el medio de pago. (EL MODELO BÁSICO NO INCLUYE PASARELA DE PAGOS CON ENTIDADES BANCARIAS).
                             <br></br>
                             - Una Interfaz lista de compras, los usuarios podrán visualizar la última compra realizada y un listado de compras realizadas anteriormente.

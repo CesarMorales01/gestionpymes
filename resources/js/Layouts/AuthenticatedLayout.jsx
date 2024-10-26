@@ -12,7 +12,7 @@ export default function Authenticated({ user, header, children, globalVars }) {
                     <div className="flex justify-between h-16">
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
-                                <a className='tamañoLetraNav inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150' href={route('dashboard')} style={{ color: globalVars.info == null ? 'black' : globalVars.info.color_letra_navbar, cursor: 'pointer' }} > <i style={{ marginRight: '0.2em' }} className="fas fa-home fa-1x"></i>Home</a>
+                                <a className='tamañoLetraNav inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150' href={route('dashboard')} style={{cursor: 'pointer' }} > <i style={{ marginRight: '0.2em' }} className="fas fa-home fa-1x"></i>Home</a>
                             </div>
                             <div className="hidden space-x-8 md:-my-px md:ml-10 md:flex ">
                                 <div className='rounded' style={{ zIndex: '9', marginTop: '1em', borderRadius: '15px' }} >
@@ -22,11 +22,11 @@ export default function Authenticated({ user, header, children, globalVars }) {
                                             <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                                         </svg>
                                     </button>
-                                    <div style={{ borderRadius: '15px' }} className="hidden peer-hover:flex hover:flex flex-col bg-white drop-shadow-lg">
-                                        <a style={{ color: globalVars.info == null ? 'black' : globalVars.info.color_letra_navbar, padding: '0.5em' }} className="tamañoLetraNav btn btn-outline-light text-left hover:bg-gray-200" href={route('product.index')} active={route().current('product.index')}>Productos</a>
-                                        <a style={{ color: globalVars.info == null ? 'black' : globalVars.info.color_letra_navbar, padding: '0.5em' }} className="tamañoLetraNav btn btn-outline-light text-left hover:bg-gray-200" href={route('category.index')} active={route().current('category.index')}>Categorias</a>
-                                        <a style={{ display: 'none', color: globalVars.info == null ? 'black' : globalVars.info.color_letra_navbar, padding: '0.5em' }} className="tamañoLetraNav btn btn-outline-light text-left hover:bg-gray-200" href={route('promo.index')} active={route().current('promo.index')}>Carrusel</a>
-                                        <a style={{ color: globalVars.info == null ? 'black' : globalVars.info.color_letra_navbar, padding: '0.5em' }} className="tamañoLetraNav btn btn-outline-light text-left hover:bg-gray-200" href={route('question.index')} active={route().current('question.index')}>Preguntas</a>
+                                    <div style={{ borderRadius: '7px' }} className="hidden peer-hover:flex hover:flex flex-col bg-white drop-shadow-lg">
+                                        <a style={{ color: 'black', padding: '0.5em' }} className="tamañoLetraNav btn btn-outline-light text-left hover:bg-gray-200" href={route('product.index')} active={route().current('product.index')}>Productos</a>
+                                        <a style={{ color: 'black', padding: '0.5em' }} className="tamañoLetraNav btn btn-outline-light text-left hover:bg-gray-200" href={route('category.index')} active={route().current('category.index')}>Categorias</a>
+                                        <a style={{ display: 'none', color: 'black', padding: '0.5em' }} className="tamañoLetraNav btn btn-outline-light text-left hover:bg-gray-200" href={route('promo.index')} active={route().current('promo.index')}>Carrusel</a>
+                                        <a style={{ display: 'none', color: 'black', padding: '0.5em' }} className="tamañoLetraNav btn btn-outline-light text-left hover:bg-gray-200" href={route('question.index')} active={route().current('question.index')}>Preguntas</a>
                                     </div>
                                 </div>
                                 <NavLink colorLetra={globalVars.info == null ? 'black' : globalVars.info.color_letra_navbar} href={route('shopping.index')} active={route().current('shopping.index')}>
@@ -56,7 +56,7 @@ export default function Authenticated({ user, header, children, globalVars }) {
                                 <Dropdown>
                                     <Dropdown.Trigger>
                                         <span className="inline-flex rounded-md">
-                                            <button style={{ color: globalVars.info == null ? 'black' : globalVars.info.color_letra_navbar }}
+                                            <button
                                                 type="button"
                                                 className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                             >
@@ -79,9 +79,9 @@ export default function Authenticated({ user, header, children, globalVars }) {
                                     </Dropdown.Trigger>
 
                                     <Dropdown.Content>
-                                        <Dropdown.Link colorLetra={globalVars.info == null ? 'black' : globalVars.info.color_letra_navbar} href={route('setting.index')}>Configuraciones</Dropdown.Link>
-                                        <Dropdown.Link colorLetra={globalVars.info == null ? 'black' : globalVars.info.color_letra_navbar} href={route('profile.edit')}>Cuenta</Dropdown.Link>
-                                        <Dropdown.Link colorLetra={globalVars.info == null ? 'black' : globalVars.info.color_letra_navbar} href={route('logout')} method="post" as="button">
+                                        <Dropdown.Link colorLetra={'black'} href={route('setting.index')}>Configuraciones</Dropdown.Link>
+                                        <Dropdown.Link colorLetra={'black'} href={route('profile.edit')}>Cuenta</Dropdown.Link>
+                                        <Dropdown.Link colorLetra={'black'} href={route('logout')} method="post" as="button">
                                             Salir
                                         </Dropdown.Link>
                                     </Dropdown.Content>
@@ -179,9 +179,9 @@ export default function Authenticated({ user, header, children, globalVars }) {
                             </Dropdown.Trigger>
 
                             <Dropdown.Content>
-                                <Dropdown.Link colorLetra={globalVars.info == null ? 'black' : globalVars.info.color_letra_navbar} href={route('setting.index')}>Configuraciones</Dropdown.Link>
-                                <Dropdown.Link colorLetra={globalVars.info == null ? 'black' : globalVars.info.color_letra_navbar} href={route('profile.edit')}>Cuenta</Dropdown.Link>
-                                <Dropdown.Link colorLetra={globalVars.info == null ? 'black' : globalVars.info.color_letra_navbar} href={route('logout')} method="post" as="button">
+                                <Dropdown.Link colorLetra={'black'} href={route('setting.index')}>Configuraciones</Dropdown.Link>
+                                <Dropdown.Link colorLetra={'black'} href={route('profile.edit')}>Cuenta</Dropdown.Link>
+                                <Dropdown.Link colorLetra={'black'} href={route('logout')} method="post" as="button">
                                     Salir
                                 </Dropdown.Link>
                             </Dropdown.Content>

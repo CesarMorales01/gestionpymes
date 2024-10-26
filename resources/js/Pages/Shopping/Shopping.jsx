@@ -94,7 +94,10 @@ const ListaCompras = (params) => {
     }
 
     function buscarVenta() {
-        const buscar = document.getElementById('inputBuscar').value
+        let buscar = document.getElementById('inputBuscar').value
+        if(buscar!=''){
+            buscar=buscar.toLowerCase()
+        }
         let newArray = []
         if (busquedaXCliente) {
             for (let i = 0; i < lista.length; i++) {
